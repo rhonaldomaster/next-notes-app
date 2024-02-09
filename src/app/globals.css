@@ -38,6 +38,8 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --color-primary: #927b00;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -104,4 +106,69 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.notes {
+  column-gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.notes__box {
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.notes__sidebar {
+  flex-basis: 25%;
+  text-align: center;
+  padding: 20px;
+}
+
+.notes__sidebar-label {
+  display: block;
+  margin-bottom: 20px;
+  text-align: start;
+}
+
+.notes__sidebar-input {
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.notes__button {
+  border: 0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.notes__sidebar-information {
+  margin-top: 20px;
+}
+
+.notes__sidebar-status {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0 0 15px;
+}
+
+.notes__sidebar-counter {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.notes__list {
+  align-content: flex-start;
+  column-gap: 15px;
+  display: flex;
+  flex-basis: 70%;
+  flex-wrap: wrap;
+  list-style: none;
+  row-gap: 15px;
+}
+
+.notes__list-item {
+  flex-basis: 25%;
 }
