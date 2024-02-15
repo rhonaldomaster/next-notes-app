@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import NoteList from './NoteList';
 import NoteSidebar from './NoteSidebar';
+import './notes.css';
 
 export default function Notes() {
   const [notes, setNote] = useState([]);
@@ -20,7 +21,7 @@ export default function Notes() {
   const updateNoteStatus = (id, noteNewStatus) => {
     const completedOn =
       noteNewStatus === 'complete'
-        ? new Date().toLocaleString('es-co', { timeZone: 'America/Bogota' })
+        ? new Date()
         : '';
     const updatedNotes = notes.map((note) =>
       note.key === id
