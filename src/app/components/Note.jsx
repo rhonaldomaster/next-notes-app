@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Note(props) {
@@ -18,7 +19,7 @@ export default function Note(props) {
   };
 
   const handleStart = () => {
-    setStartTime(props.completionDate);
+    setStartTime(typeof props.completionDate === 'object' ? props.completionDate.getTime() : props.completionDate);
     setNow(Date.now());
 
     clearInterval(intervalRef.current);
@@ -46,13 +47,21 @@ export default function Note(props) {
       ref={note}
       data-key={noteKey}
     >
-      <p className="notes__text">{text}</p>
+      <p className="notes__text">
+        <Link
+          href={`/notedetail?id=${noteKey}&status=${status}&text=${text}&completion=${props.completionDate?.getTime() ?? ''}`}
+        >
+          {text}
+        </Link>
+      </p>
       {status === 'open' ? (
         <button className="notes__button" type="button" onClick={completeTask}>
           Mark as complete
         </button>
       ) : (
-        <p className="notes__status" role="status">Completed {secondsPassed.toFixed(0)}s ago</p>
+        <p className="notes__status" role="status">
+          Completed {secondsPassed.toFixed(0)}s ago
+        </p>
       )}
     </li>
   );
